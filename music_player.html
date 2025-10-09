@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Music Player Design</title>
+    <link rel="stylesheet" href="music_player.css">
+    <script src="https://kit.fontawesome.com/a7b9bb3dc8.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+     <div class="container">
+         <div class="music-player">
+           <nav>
+         <div class="circle">
+           <i class="fa-solid fa-angle-left"></i>
+         </div>
+         <div class="circle">
+            <i class="fa-solid fa-bars"></i>
+         </div>
+           </nav>
+         <img src="sitar_photo.jpg" class="song-img" alt="">
+         <h1>Chanakya</h1>
+         <p>Rishab Sharma</p>
+
+         <audio  id="song">
+           <source src="Chanakya-By-Rishabh-Sharma.mp3" type="audio/mp3">
+         </audio>
+         <input type="range" value="0" id="progress">
+
+         <div class="controls">
+           <div><i class="fa-solid fa-backward"></i></div>
+            <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlicon"></i></div>
+            <div><i class="fa-solid fa-forward"></i></div>
+         </div>
+
+         </div>
+     </div>
+
+
+     <script type="text/javascript">
+       let progress = document.getElementById("progress");
+       let song = document.getElementById("song");
+       let ctrlicon = document.getElementById("ctrlicon");
+
+       // Set initial values once metadata is loaded
+       song.onloadedmetadata = function () {
+         progress.max = song.duration;
+         progress.value = song.currentTime;
+       };
+
+       // Play/pause functionality
+       function playPause() {
+         if (ctrlicon.classList.contains("fa-pause")) {
+           song.pause();
+           ctrlicon.classList.remove("fa-pause");
+           ctrlicon.classList.add("fa-play");
+         } else {
+           song.play();
+           ctrlicon.classList.remove("fa-play");
+           ctrlicon.classList.add("fa-pause");
+         }
+       }
+
+       // Update progress bar every 500ms
+       setInterval(() => {
+         if (!song.paused && !isNaN(song.duration)) {
+           progress.value = song.currentTime;
+         }
+       }, 500);
+
+       // Seek functionality when user changes the range
+       progress.onchange = function () {
+         song.currentTime = progress.value;
+         song.play(); // Optional: autoplay on seek
+         ctrlicon.classList.remove("fa-play");
+         ctrlicon.classList.add("fa-pause");
+       };
+     </script>
+
+  </body>
+</html>
