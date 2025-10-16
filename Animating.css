@@ -1,0 +1,89 @@
+
+header {
+  background-image: linear-gradient(to bottom, #3a86ff, #ff006e);
+  background-size: 100% 200%;
+  animation: gradient 5s ease infinite;
+  padding: 50px;
+  text-align: center;
+  color: #fff;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+.nav-item a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header-content {
+  margin-top: 50px;
+}
+
+.title {
+  font-size: 36px;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: scaleIn 0.5s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+.subtitle {
+  font-size: 18px;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn 0.5s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+.cta {
+  background-color: #fff;
+  color: #3a86ff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+
+
